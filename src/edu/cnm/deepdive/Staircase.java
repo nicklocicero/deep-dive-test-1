@@ -73,7 +73,7 @@ package edu.cnm.deepdive;
  *   </thead>
  *   <tbody>
  *     <tr>
- *       <td><code>0</code></td>
+ *       <td><code>2</code></td>
  *       <td><pre><code>  *
  * **</code></pre></td>
  *       <td><pre><code> *
