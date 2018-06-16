@@ -1,6 +1,7 @@
 package edu.cnm.deepdive;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -102,7 +103,7 @@ public class Leaderboard {
   }
 
   private static int[] removeDuplicates(int[] leaderboard) {
-    List<Integer> leaderboardList = new ArrayList<>();
+    List<Integer> leaderboardList = new LinkedList<>();
     leaderboardList.add(leaderboard[0]);
     for (int i = 0; i < leaderboard.length - 1; i++) {
       if (leaderboard[i] == leaderboard[i + 1]) {
