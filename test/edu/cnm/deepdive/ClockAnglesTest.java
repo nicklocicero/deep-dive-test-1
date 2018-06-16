@@ -10,7 +10,7 @@ class ClockAnglesTest {
   static final double[] MINUTES = {0, 15, 30, 42};
   static final double[] HOUR_HAND_DEGREES_TEST = {0, 97.5, 15, 231};
   static final double[] MINUTE_HAND_DEGREES_TEST = {0, 90, 180, 252};
-  static final double[] HOUR_HAND_RADIANS_TEST = {1.57079632679, 6.152285613280012, 1.57079632679, 3.822271061867582};
+  static final double[] HOUR_HAND_RADIANS_TEST = {1.57079632679, 6.152285613280012, 1.3089969389957474, 3.822271061867582};
   static final double[] MINUTE_HAND_RADIANS_TEST = {1.57079632679, 0, 4.71238898038, 3.4557519189487724};
 
   static ClockAngles clock = new ClockAngles();
