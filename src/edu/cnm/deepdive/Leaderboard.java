@@ -61,22 +61,7 @@ public class Leaderboard {
    * @return            resulting ranks.
    */
   public static int[] getCompetitionRanking(int[] leaderboard, int[] scores) {
-    int[] rankings = new int[scores.length];
-    int place;
-    for (int i = 0; i < rankings.length; i++) {
-      place = 1;
-      for (int j = 0; j < leaderboard.length; j++) {
-        if (leaderboard[j] <= scores[i]) {
-          rankings[i] = place;
-          break;
-        }
-        if (j == leaderboard.length - 1) {
-          rankings[i] = place + 1;
-        }
-        place++;
-      }
-    }
-    return rankings;
+    return getRankings(leaderboard, scores);
   }
 
   /**
@@ -94,31 +79,40 @@ public class Leaderboard {
    * @return            resulting ranks.
    */
   public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
-    // TODO Implement method for EXTRA CREDIT!
-    List<Integer> leaderboardUnique = new ArrayList<Integer>();
+    leaderboard = removeDuplicates(leaderboard);
+    return getRankings(leaderboard, scores);
+  }
+
+  private static int[] getRankings(int[] leaderboard, int[] scores) {
     int place;
-    for (int score : leaderboard) {
-      if (leaderboardUnique.contains(score)) {
-        continue;
-      } else {
-        leaderboardUnique.add(score);
-      }
-    }
     int[] rankings = new int[scores.length];
     for (int i = 0; i < rankings.length; i++) {
       place = 1;
-      for (int j = 0; j < leaderboardUnique.size(); j++) {
-        if (leaderboardUnique.get(j) <= scores[i]) {
+      for (int j = 0; j < leaderboard.length; j++) {
+        if (leaderboard[j] <= scores[i]) {
           rankings[i] = place;
           break;
         }
-        if (j == leaderboardUnique.size() - 1) {
+        if (j == leaderboard.length - 1) {
           rankings[i] = place + 1;
         }
         place++;
       }
     }
     return rankings;
+  }
+
+  private static int[] removeDuplicates(int[] leaderboard) {
+    List<Integer> leaderboardList = new ArrayList<>();
+    leaderboardList.add(leaderboard[0]);
+    for (int i = 0; i < leaderboard.length - 1; i++) {
+      if (leaderboard[i] == leaderboard[i+1]) {
+        continue;
+      } else {
+        leaderboardList.add(leaderboard[i + 1]);
+      }
+    }
+    return leaderboardList.stream().mapToInt(i->i).toArray();
   }
 
 }

@@ -14,7 +14,7 @@ class ClockAnglesTest {
   static final double[] MINUTE_HAND_RADIANS_TEST = {1.57079632679, 0, 4.71238898038, 3.4557519189487724};
 
   static ClockAngles clock = new ClockAngles();
-  DecimalFormat df = new DecimalFormat("#.##");
+  static DecimalFormat df = new DecimalFormat("#.##");
 
   @org.junit.jupiter.api.Test
   void hourHandDegrees() {
@@ -33,7 +33,6 @@ class ClockAnglesTest {
   @org.junit.jupiter.api.Test
   void hourHandRadians() {
     for (int i = 0; i < HOUR_HAND_RADIANS_TEST.length; i++) {
-      System.out.println("Test #" + i);
       assertEquals(df.format(HOUR_HAND_RADIANS_TEST[i]), df.format(clock.hourHandRadians(HOURS[i], MINUTES[i])));
     }
   }

@@ -123,7 +123,6 @@ public class Staircase {
     }
 
     return result;
-
   }
 
   /**
@@ -146,13 +145,12 @@ public class Staircase {
 
     int width = getFibonacciWidth(height);
 
-    getFibonacciStaircase(staircase, height, width);
+    fillFibonacciStaircase(staircase, height, width);
 
     return staircase;
-
   }
 
-  private static void getFibonacciStaircase(String[] result, int height, int width) {
+  private static void fillFibonacciStaircase(String[] result, int height, int width) {
 
     String asterisksPrevious = "*";
     String asterisksCurrent = "*";

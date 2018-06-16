@@ -128,8 +128,7 @@ public class ClockAngles {
    */
   public static double hourHandRadians(int hours, double minutes) {
     double degrees = hourHandDegrees(hours, minutes);
-    degrees = (0 <= degrees && degrees <= 90) ? 90 - degrees : 360 + 90 - degrees;
-    return degrees * Math.PI / 180;
+    return getRadians(degrees);
   }
 
   /**
@@ -141,6 +140,10 @@ public class ClockAngles {
    */
   public static double minuteHandRadians(double minutes) {
     double degrees = minuteHandDegrees(minutes);
+    return getRadians(degrees);
+  }
+
+  private static double getRadians(double degrees) {
     degrees = (0 <= degrees && degrees <= 90) ? 90 - degrees : 360 + 90 - degrees;
     return degrees * Math.PI / 180;
   }
