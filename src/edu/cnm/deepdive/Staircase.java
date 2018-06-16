@@ -113,7 +113,17 @@ public class Staircase {
    * @return        array of length <code>height</code>.
    */
   public static String[] buildLinearStaircase(int height) {
-    // TODO Implement method.
+
+    String[] result = new String[height];
+    String asterisks = "*";
+
+    for (int i = 0; i < height; i++) {
+      result[i] = String.format("%1$"+height+ "s", asterisks);
+      asterisks += "*";
+    }
+
+    return result;
+
   }
 
   /**
@@ -131,7 +141,49 @@ public class Staircase {
    * @return        array of length <code>height</code>.
    */
   public static String[] buildFibonacciStaircase(int height) {
-    // TODO Implement method for EXTRA CREDIT!
+
+    String[] staircase = new String[height];
+
+    int width = getFibonacciWidth(height);
+
+    getFibonacciStaircase(staircase, height, width);
+
+    return staircase;
+
+  }
+
+  private static void getFibonacciStaircase(String[] result, int height, int width) {
+
+    String asterisksPrevious = "*";
+    String asterisksCurrent = "*";
+    String asterisksTemp;
+
+    result[0] = String.format("%1$" + width + "s", asterisksCurrent);
+    result[1] = String.format("%1$" + width + "s", asterisksCurrent);
+
+    for (int i = 2; i < height; i++) {
+      asterisksTemp = asterisksCurrent;
+      asterisksCurrent = asterisksCurrent + asterisksPrevious;
+      asterisksPrevious = asterisksTemp;
+      result[i] = String.format("%1$" + width + "s", asterisksCurrent);
+
+    }
+  }
+
+  private static int getFibonacciWidth(int height) {
+
+    int prev = 1;
+    int current = 1;
+    int temp;
+
+    for (int i = 2; i < height; i++) {
+      temp = current;
+      current = current + prev;
+      prev = temp;
+    }
+
+    return current;
+
   }
 
 }

@@ -1,5 +1,9 @@
 package edu.cnm.deepdive;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * The static methods of this class compute rankings of an input array of scores
  * against a leaderboard of scores.
@@ -57,7 +61,22 @@ public class Leaderboard {
    * @return            resulting ranks.
    */
   public static int[] getCompetitionRanking(int[] leaderboard, int[] scores) {
-    // TODO Implement method.
+    int[] rankings = new int[scores.length];
+    int place;
+    for (int i = 0; i < rankings.length; i++) {
+      place = 1;
+      for (int j = 0; j < leaderboard.length; j++) {
+        if (leaderboard[j] <= scores[i]) {
+          rankings[i] = place;
+          break;
+        }
+        if (j == leaderboard.length - 1) {
+          rankings[i] = place + 1;
+        }
+        place++;
+      }
+    }
+    return rankings;
   }
 
   /**
@@ -76,6 +95,30 @@ public class Leaderboard {
    */
   public static int[] getDenseRanking(int[] leaderboard, int[] scores) {
     // TODO Implement method for EXTRA CREDIT!
+    List<Integer> leaderboardUnique = new ArrayList<Integer>();
+    int place;
+    for (int score : leaderboard) {
+      if (leaderboardUnique.contains(score)) {
+        continue;
+      } else {
+        leaderboardUnique.add(score);
+      }
+    }
+    int[] rankings = new int[scores.length];
+    for (int i = 0; i < rankings.length; i++) {
+      place = 1;
+      for (int j = 0; j < leaderboardUnique.size(); j++) {
+        if (leaderboardUnique.get(j) <= scores[i]) {
+          rankings[i] = place;
+          break;
+        }
+        if (j == leaderboardUnique.size() - 1) {
+          rankings[i] = place + 1;
+        }
+        place++;
+      }
+    }
+    return rankings;
   }
 
 }

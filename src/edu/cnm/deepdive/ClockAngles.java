@@ -103,7 +103,7 @@ public class ClockAngles {
    * @return        angle (in degrees) to which hour hand is oriented.
    */
   public static double hourHandDegrees(int hours, double minutes) {
-    // TODO Implement method.
+    return 30 * (hours % 12) + (minutes / 2);
   }
 
   /**
@@ -114,7 +114,7 @@ public class ClockAngles {
    * @return        angle (in degrees) to which minute hand is oriented.
    */
   public static double minuteHandDegrees(double minutes) {
-    // TODO Implement method.
+    return 6 * minutes;
   }
 
   /**
@@ -127,7 +127,9 @@ public class ClockAngles {
    * @return        angle (in radians) to which hour hand is oriented.
    */
   public static double hourHandRadians(int hours, double minutes) {
-    // TODO Implement method for EXTRA CREDIT!
+    double degrees = hourHandDegrees(hours, minutes);
+    degrees = (0 <= degrees && degrees <= 90) ? 90 - degrees : 360 + 90 - degrees;
+    return degrees * Math.PI / 180;
   }
 
   /**
@@ -138,7 +140,9 @@ public class ClockAngles {
    * @return        angle (in radians) to which minute hand is oriented.
    */
   public static double minuteHandRadians(double minutes) {
-    // TODO Implement method for EXTRA CREDIT!
+    double degrees = minuteHandDegrees(minutes);
+    degrees = (0 <= degrees && degrees <= 90) ? 90 - degrees : 360 + 90 - degrees;
+    return degrees * Math.PI / 180;
   }
 
 }
