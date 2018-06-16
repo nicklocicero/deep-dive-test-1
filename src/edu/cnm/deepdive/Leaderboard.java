@@ -2,7 +2,6 @@ package edu.cnm.deepdive;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The static methods of this class compute rankings of an input array of scores
