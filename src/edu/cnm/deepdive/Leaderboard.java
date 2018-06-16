@@ -84,23 +84,31 @@ public class Leaderboard {
   }
 
   private static int[] getRankings(int[] leaderboard, int[] scores) {
-    int place, i;
-    // WARNING: Current implementation mutates scores array. Please create a new int[] rankings array
-    // to return if you plan to reuse a scores array in the program.
-    for (i = 0; i < scores.length; i++) {
-      place = 1;
-      for (int j = 0; j < leaderboard.length; j++) {
-        if (leaderboard[j] <= scores[i]) {
-          scores[i] = place;
-          break;
+    int score = 0;
+    int[] rankings = new int[scores.length];
+    for (int place = leaderboard.length - 1; place >= 0; place--) {
+      if (leaderboard[place] < scores[score]) {
+        continue;
+      } else if (leaderboard[place] == scores[score]) {
+        while (leaderboard[place] == scores[score] && place >= 0) {
+          place--;
         }
-        if (j == leaderboard.length - 1) {
-          scores[i] = place + 1;
-        }
-        place++;
+        rankings[score] = ++place + 1;
+      } else {
+        rankings[score] = place + 2;
       }
+      if (score == scores.length - 1) {
+        break;
+      }
+      score++;
     }
-    return scores;
+    while (score < scores.length) {
+      if (leaderboard[0] <= scores[score]) {
+        rankings[score] = 1;
+      }
+      score++;
+    }
+    return rankings;
   }
 
   private static int[] removeDuplicates(int[] leaderboard) {
