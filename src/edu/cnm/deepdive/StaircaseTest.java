@@ -34,7 +34,7 @@ class StaircaseTest {
       }
   };
 
-  Staircase staircase = new Staircase();
+  static Staircase staircase = new Staircase();
 
   @Test
   void buildLinearStaircase() {
