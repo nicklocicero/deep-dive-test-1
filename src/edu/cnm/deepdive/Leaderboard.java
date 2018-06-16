@@ -85,6 +85,8 @@ public class Leaderboard {
 
   private static int[] getRankings(int[] leaderboard, int[] scores) {
     int place, i;
+    // WARNING: Current implementation mutates scores array. Please create a new int[] rankings array
+    // to return if you plan to reuse a scores array in the program.
     for (i = 0; i < scores.length; i++) {
       place = 1;
       for (int j = 0; j < leaderboard.length; j++) {
