@@ -84,22 +84,21 @@ public class Leaderboard {
   }
 
   private static int[] getRankings(int[] leaderboard, int[] scores) {
-    int place;
-    int[] rankings = new int[scores.length];
-    for (int i = 0; i < rankings.length; i++) {
+    int place, i;
+    for (i = 0; i < scores.length; i++) {
       place = 1;
       for (int j = 0; j < leaderboard.length; j++) {
         if (leaderboard[j] <= scores[i]) {
-          rankings[i] = place;
+          scores[i] = place;
           break;
         }
         if (j == leaderboard.length - 1) {
-          rankings[i] = place + 1;
+          scores[i] = place + 1;
         }
         place++;
       }
     }
-    return rankings;
+    return scores;
   }
 
   private static int[] removeDuplicates(int[] leaderboard) {
