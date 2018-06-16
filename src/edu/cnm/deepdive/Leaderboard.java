@@ -105,7 +105,7 @@ public class Leaderboard {
     List<Integer> leaderboardList = new ArrayList<>();
     leaderboardList.add(leaderboard[0]);
     for (int i = 0; i < leaderboard.length - 1; i++) {
-      if (leaderboard[i] == leaderboard[i+1]) {
+      if (leaderboard[i] == leaderboard[i + 1]) {
         continue;
       } else {
         leaderboardList.add(leaderboard[i + 1]);
