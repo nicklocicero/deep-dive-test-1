@@ -144,7 +144,7 @@ public class ClockAngles {
   }
 
   private static double getRadians(double degrees) {
-    degrees = (0 <= degrees && degrees <= 90) ? 90 - degrees : 360 + 90 - degrees;
+    degrees = (450 - degrees) % 360;
     return degrees * Math.PI / 180;
   }
 

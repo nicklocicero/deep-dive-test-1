@@ -6,12 +6,12 @@ import java.text.DecimalFormat;
 
 class ClockAnglesTest {
 
-  static final int[] HOURS = {0, 3, 12, 19};
-  static final double[] MINUTES = {0, 15, 30, 42};
-  static final double[] HOUR_HAND_DEGREES_TEST = {0, 97.5, 15, 231};
-  static final double[] MINUTE_HAND_DEGREES_TEST = {0, 90, 180, 252};
-  static final double[] HOUR_HAND_RADIANS_TEST = {1.57079632679, 6.152285613280012, 1.3089969389957474, 3.822271061867582};
-  static final double[] MINUTE_HAND_RADIANS_TEST = {1.57079632679, 0, 4.71238898038, 3.4557519189487724};
+  static final int[] HOURS = {0, 3, 12, 19, 23};
+  static final double[] MINUTES = {0, 15, 30, 42, 58};
+  static final double[] HOUR_HAND_DEGREES_TEST = {0, 97.5, 15, 231, 359};
+  static final double[] MINUTE_HAND_DEGREES_TEST = {0, 90, 180, 252, 348};
+  static final double[] HOUR_HAND_RADIANS_TEST = {1.57079632679, 6.152285613280012, 1.3089969389957474, 3.822271061867582, 1.58824962};
+  static final double[] MINUTE_HAND_RADIANS_TEST = {1.57079632679, 0, 4.71238898038, 3.4557519189487724, 1.78023584};
 
   static ClockAngles clock = new ClockAngles();
   static DecimalFormat df = new DecimalFormat("#.##");
