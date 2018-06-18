@@ -84,32 +84,32 @@ public class Leaderboard {
   }
 
   private static int[] getRankings(int[] leaderboard, int[] scores) {
-    int score = 0;
     int[] rankings = new int[scores.length];
-    for (int place = leaderboard.length - 1; place >= 0; place--) {
-      if (leaderboard[place] < scores[score]) {
-        continue;
-      } else if (leaderboard[place] == scores[score]) {
-        while (leaderboard[place] == scores[score] && place >= 0) {
-          place--;
-          if (place == -1) {
+    int place = 1;
+    for (int score = scores.length - 1; score >= 0; score--) {
+      if (scores[score] > leaderboard[place - 1]) {
+        rankings[score] = place;
+      } else if (scores[score] == leaderboard[place - 1]) {
+        rankings[score] = place;
+      } else {
+        if (place > leaderboard.length) {
+          break;
+        }
+        while (scores[score] < leaderboard[place - 1]) {
+          place++;
+          if (place > leaderboard.length) {
             break;
           }
         }
-        rankings[score] = ++place + 1;
-      } else {
-        rankings[score] = place + 2;
+        if (place > leaderboard.length) {
+          while (score >= 0) {
+            rankings[score] = place;
+            score--;
+          }
+          break;
+        }
+        rankings[score] = place;
       }
-      if (score == scores.length - 1) {
-        break;
-      }
-      score++;
-    }
-    while (score < scores.length) {
-      if (leaderboard[0] <= scores[score]) {
-        rankings[score] = 1;
-      }
-      score++;
     }
     return rankings;
   }
