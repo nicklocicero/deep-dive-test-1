@@ -92,6 +92,9 @@ public class Leaderboard {
       } else if (leaderboard[place] == scores[score]) {
         while (leaderboard[place] == scores[score] && place >= 0) {
           place--;
+          if (place == -1) {
+            break;
+          }
         }
         rankings[score] = ++place + 1;
       } else {

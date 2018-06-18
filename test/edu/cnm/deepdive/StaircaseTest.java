@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class StaircaseTest {
 
-  static final int[] HEIGHTS = {2, 5};
+  static final int[] HEIGHTS = {2, 5, 8};
   static final String[][] LINEAR_STAIRS_EXPECTED = {
       new String[] {
           " *",
@@ -18,6 +18,16 @@ class StaircaseTest {
           "  ***",
           " ****",
           "*****"
+      },
+      new String[] {
+          "       *",
+          "      **",
+          "     ***",
+          "    ****",
+          "   *****",
+          "  ******",
+          " *******",
+          "********"
       }
   };
   static final String[][] FIBONACCI_STAIRS_EXPECTED = {
@@ -31,6 +41,16 @@ class StaircaseTest {
           "   **",
           "  ***",
           "*****"
+      },
+      new String[] {
+          "                    *",
+          "                    *",
+          "                   **",
+          "                  ***",
+          "                *****",
+          "             ********",
+          "        *************",
+          "*********************"
       }
   };
 
